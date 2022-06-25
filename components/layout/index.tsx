@@ -9,13 +9,11 @@ type LayoutProps = {
 const Layout: FC<LayoutProps> = ({ children }) => (
   <>
     <Grid h="100vh" templateRows="70px 1fr" templateColumns="200px 1fr">
-      <GridItem colSpan={1} rowSpan={2} bg="tomato">
+      <GridItem colSpan={1} rowSpan={2}>
         <Sidebar />
       </GridItem>
       <GridItem colSpan={1} bg="papayawhip" />
-      <GridItem colSpan={1} bg="yellow">
-        {children}
-      </GridItem>
+      <GridItem colSpan={1}>{children}</GridItem>
     </Grid>
   </>
 );
