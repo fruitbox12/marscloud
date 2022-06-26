@@ -1,5 +1,4 @@
 import { FC } from "react";
-import NextLink from "next/link";
 import {
   Stack,
   Box,
@@ -9,8 +8,8 @@ import {
   AccordionIcon,
   AccordionPanel,
   Divider,
-  Link,
 } from "@chakra-ui/react";
+import SiderbarLink from "./sidebar-link";
 
 const Sidebar: FC = () => {
   return (
@@ -23,9 +22,7 @@ const Sidebar: FC = () => {
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pb={4} color="gray.200">
-              <NextLink href="/projects/new" passHref>
-                <Link>New project</Link>
-              </NextLink>
+              <SiderbarLink href="/projects/new">New project</SiderbarLink>
             </AccordionPanel>
           </AccordionItem>
           <Divider color="gray.400" />
@@ -35,20 +32,10 @@ const Sidebar: FC = () => {
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pb={4} color="gray.200">
-              <Stack>
-                <NextLink href="/instances" passHref>
-                  <Link>Instances</Link>
-                </NextLink>
-                <NextLink href="/volumes" passHref>
-                  <Link>Volumes</Link>
-                </NextLink>
-                <NextLink href="/images" passHref>
-                  <Link>Images</Link>
-                </NextLink>
-                <NextLink href="/networking" passHref>
-                  <Link>Networking</Link>
-                </NextLink>
-              </Stack>
+              <SiderbarLink href="/instances">Instances</SiderbarLink>
+              <SiderbarLink href="/volumes">Volumes</SiderbarLink>
+              <SiderbarLink href="/images">Images</SiderbarLink>
+              <SiderbarLink href="/networking">Networking</SiderbarLink>
             </AccordionPanel>
           </AccordionItem>
         </Stack>
