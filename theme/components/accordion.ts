@@ -18,6 +18,11 @@ const accordion = {
           bg: "none",
         },
       },
+      panel: {
+        display: "flex",
+        flexDirection: "column",
+        p: 0,
+      },
     },
   },
 };
