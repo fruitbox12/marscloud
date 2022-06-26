@@ -13,7 +13,7 @@ import SiderbarLink from "./sidebar-link";
 
 const Sidebar: FC = () => {
   return (
-    <Stack bg="blue.800" h="100%" pt={28}>
+    <Stack bg="purple.700" h="100%" pt={28}>
       <Accordion defaultIndex={[0, 1]} allowMultiple variant="sidebar">
         <Stack spacing={4}>
           <AccordionItem>
