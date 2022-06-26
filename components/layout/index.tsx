@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Container, Grid, GridItem } from "@chakra-ui/react";
 import Sidebar from "../sidebar";
 
 type LayoutProps = {
@@ -13,7 +13,11 @@ const Layout: FC<LayoutProps> = ({ children }) => (
         <Sidebar />
       </GridItem>
       <GridItem colSpan={1} bg="papayawhip" />
-      <GridItem colSpan={1}>{children}</GridItem>
+      <GridItem colSpan={1}>
+        <Container maxW="1200px" py={10} px={4}>
+          {children}
+        </Container>
+      </GridItem>
     </Grid>
   </>
 );
