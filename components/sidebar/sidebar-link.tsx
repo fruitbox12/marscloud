@@ -15,7 +15,7 @@ const SiderbarLink: FC<SiderbarLinkProps> = ({ children, href }) => {
   const bg = isActive ? "rgba(250,250,250,.2);" : "";
   const fontWeight = isActive ? "600" : "500";
   const hover = {
-    _hover: { bg: isActive ? "rgba(250,250,250,.2);" : "#0a1b3d" },
+    _hover: { bg: isActive ? "rgba(250,250,250,.2);" : "purple.800" },
   };
 
   return (
