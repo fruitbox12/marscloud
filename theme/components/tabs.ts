@@ -25,6 +25,10 @@ const tabs = {
           w: "100%",
         },
       },
+      tabpanel: {
+        marginTop: "32px",
+        borderTop: "2px solid #dfdfdf",
+      },
       tab: {
         position: "relative",
         fontWeight: "bold",
@@ -36,20 +40,26 @@ const tabs = {
           borderColor: "gray.300",
         },
 
-        "&:before": {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "400px",
-          height: "200px",
-          backgroundColor: "red",
-        },
         _selected: {
           border: "1px",
           borderColor: "blue.500",
           color: "blue.500",
           "&:not(:first-of-type)": {
             m: "0px 0px 0px -1px",
+          },
+          "&:before": {
+            content: "''",
+            display: "block",
+            position: "absolute",
+            width: "16px",
+            height: "16px",
+            backgroundColor: "#fff",
+            border: "2px solid #dfdfdf",
+            transform: "rotate(45deg) translateX(-50%)",
+            left: "50%",
+            bottom: "-47px",
+            borderRight: "none",
+            borderBottom: "none",
           },
         },
       },
@@ -58,9 +68,3 @@ const tabs = {
 };
 
 export default tabs;
-
-// "tab",
-// "tablist",
-// "tabpanel",
-// "tabpanels",
-// "indicator",
