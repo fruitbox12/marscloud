@@ -25,6 +25,6 @@ const accordion = {
       },
     },
   },
-};
+}
 
-export default accordion;
+export default accordion

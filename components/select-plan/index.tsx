@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react"
 import {
   Stack,
   Heading,
@@ -19,7 +19,7 @@ import {
   Button,
   Text,
   HStack,
-} from "@chakra-ui/react";
+} from "@chakra-ui/react"
 
 const data = [
   {
@@ -144,10 +144,10 @@ const data = [
       },
     ],
   },
-];
+]
 
 const SelectPlan: FC = () => {
-  const [selectedPlan, setSelectedPlan] = useState<number>();
+  const [selectedPlan, setSelectedPlan] = useState<number>()
 
   return (
     <Stack spacing={5}>
@@ -251,7 +251,7 @@ const SelectPlan: FC = () => {
         </TabPanels>
       </Tabs>
     </Stack>
-  );
-};
+  )
+}
 
-export default SelectPlan;
+export default SelectPlan

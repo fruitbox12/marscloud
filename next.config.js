@@ -8,8 +8,8 @@ const nextConfig = {
         destination: "/instances",
         permanent: true,
       },
-    ];
+    ]
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement } from "react"
 import {
   Heading,
   Stack,
@@ -7,10 +7,10 @@ import {
   Image,
   Box,
   Flex,
-} from "@chakra-ui/react";
-import Layout from "../../components/layout";
-import type { NextPageWithLayout } from "../_app";
-import createImage from "../../public/create-instance.jpg";
+} from "@chakra-ui/react"
+import Layout from "../../components/layout"
+import type { NextPageWithLayout } from "../_app"
+import createImage from "../../public/create-instance.jpg"
 
 const InstancesPage: NextPageWithLayout = () => {
   return (
@@ -26,11 +26,11 @@ const InstancesPage: NextPageWithLayout = () => {
         </Button>
       </Flex>
     </Stack>
-  );
-};
+  )
+}
 
 InstancesPage.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}
 
-export default InstancesPage;
+export default InstancesPage

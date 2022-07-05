@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from "react"
 import {
   Stack,
   Box,
@@ -8,8 +8,8 @@ import {
   AccordionIcon,
   AccordionPanel,
   Divider,
-} from "@chakra-ui/react";
-import SiderbarLink from "./sidebar-link";
+} from "@chakra-ui/react"
+import SiderbarLink from "./sidebar-link"
 
 const Sidebar: FC = () => {
   return (
@@ -41,7 +41,7 @@ const Sidebar: FC = () => {
         </Stack>
       </Accordion>
     </Stack>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react"
 import {
   Stack,
   Heading,
@@ -17,9 +17,9 @@ import {
   MenuList,
   MenuItem,
   Button,
-} from "@chakra-ui/react";
-import { VscTerminalUbuntu } from "react-icons/vsc";
-import { SiRancher, SiFedora, SiDebian, SiCentos } from "react-icons/si";
+} from "@chakra-ui/react"
+import { VscTerminalUbuntu } from "react-icons/vsc"
+import { SiRancher, SiFedora, SiDebian, SiCentos } from "react-icons/si"
 
 const data = [
   {
@@ -52,20 +52,20 @@ const data = [
     icon: <SiCentos size="38px" />,
     versions: ["9 Stream x64", "8 Stream x64", "7 x64"],
   },
-];
+]
 
 const SelectImage: FC = () => {
-  const [name, setName] = useState("Ubuntu");
-  const [version, setVersion] = useState("Select version");
+  const [name, setName] = useState("Ubuntu")
+  const [version, setVersion] = useState("Select version")
   const handleClick = (name: string) => {
-    setName(name);
-  };
+    setName(name)
+  }
 
   const handleButton = (item: any) => {
-    setVersion(item);
-  };
+    setVersion(item)
+  }
 
-  useEffect(() => {}, [name, version]);
+  useEffect(() => {}, [name, version])
   return (
     <Stack spacing={5}>
       <Heading size="lg" color="gray.700">
@@ -81,12 +81,12 @@ const SelectImage: FC = () => {
           <TabPanel>
             <Grid templateColumns="repeat(5, 1fr)" gap={6}>
               {data.map((item, index) => {
-                let ver = false;
+                let ver = false
                 if (name === item.name) {
                   const found = item.versions.find(
                     (element) => element === version
-                  );
-                  ver = found ? true : false;
+                  )
+                  ver = found ? true : false
                 }
 
                 return (
@@ -119,7 +119,7 @@ const SelectImage: FC = () => {
                       </Menu>
                     </Flex>
                   </Box>
-                );
+                )
               })}
             </Grid>
           </TabPanel>
@@ -132,7 +132,7 @@ const SelectImage: FC = () => {
         </TabPanels>
       </Tabs>
     </Stack>
-  );
-};
+  )
+}
 
-export default SelectImage;
+export default SelectImage

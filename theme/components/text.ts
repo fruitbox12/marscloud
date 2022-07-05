@@ -1,3 +1,3 @@
-const text = {};
+const text = {}
 
-export default text;
+export default text

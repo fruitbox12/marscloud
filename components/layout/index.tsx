@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import { Container, Grid, GridItem } from "@chakra-ui/react";
-import Sidebar from "../sidebar";
+import React, { FC } from "react"
+import { Container, Grid, GridItem } from "@chakra-ui/react"
+import Sidebar from "../sidebar"
 
 type LayoutProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 const Layout: FC<LayoutProps> = ({ children }) => (
   <>
@@ -20,6 +20,6 @@ const Layout: FC<LayoutProps> = ({ children }) => (
       </GridItem>
     </Grid>
   </>
-);
+)
 
-export default Layout;
+export default Layout

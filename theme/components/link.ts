@@ -7,6 +7,6 @@ const link = {
       transition: "300ms ease-out",
     },
   },
-};
+}
 
-export default link;
+export default link
