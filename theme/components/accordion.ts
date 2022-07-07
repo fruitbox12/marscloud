@@ -8,12 +8,12 @@ const accordion = {
         div: {
           flex: "1",
           textAlign: "left",
-          color: "gray.200",
+          color: "gray.900",
           fontWeight: "bold",
           textTransform: "uppercase",
           fontSize: "12px",
         },
-        svg: { color: "gray.200" },
+        svg: { color: "gray.500" },
         _hover: {
           bg: "none",
         },

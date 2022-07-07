@@ -12,10 +12,10 @@ const SiderbarLink: FC<SiderbarLinkProps> = ({ children, href }) => {
   const router = useRouter()
   const isActive =
     router.asPath.split("/")[1] === href.split("/")[1] ? true : false
-  const bg = isActive ? "rgba(250,250,250,.2);" : ""
-  const fontWeight = isActive ? "600" : "500"
+  const bg = isActive ? "gray.50" : ""
+  const fontWeight = isActive ? "500" : "400"
   const hover = {
-    _hover: { bg: isActive ? "rgba(250,250,250,.2);" : "purple.800" },
+    _hover: { bg: isActive ? "rgba(250,250,250,.2);" : "gray.100" },
   }
 
   return (
