@@ -1,10 +1,12 @@
 const link = {
   variants: {
     sidebar: {
-      color: "gray.200",
+      color: "gray.900",
       py: "8px",
-      px: "16px",
+      pl: "40px",
+      pr: "16px",
       transition: "300ms ease-out",
+      fontSize: "14px",
     },
   },
 }
