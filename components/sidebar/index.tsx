@@ -10,25 +10,28 @@ import {
   Divider,
 } from "@chakra-ui/react"
 import SiderbarLink from "./sidebar-link"
+import { BiAddToQueue, BiBarChartAlt2 } from "react-icons/bi"
 
 const Sidebar: FC = () => {
   return (
-    <Stack bg="purple.700" h="100%" pt={28}>
+    <Stack bg="white" h="100%" pt={28} borderRight="1px" borderColor="gray.100">
       <Accordion defaultIndex={[0, 1]} allowMultiple variant="sidebar">
         <Stack spacing={4}>
           <AccordionItem>
             <AccordionButton>
-              <Box>Projects</Box>
+              <BiAddToQueue />
+              <Box ml={2}>Projects</Box>
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pb={4} color="gray.200">
               <SiderbarLink href="/projects/new">New project</SiderbarLink>
             </AccordionPanel>
           </AccordionItem>
-          <Divider color="gray.400" />
+          <Divider color="gray.100" />
           <AccordionItem>
             <AccordionButton>
-              <Box>Manage</Box>
+              <BiBarChartAlt2 />
+              <Box ml={2}>Manage</Box>
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pb={4} color="gray.200">
