@@ -31,6 +31,7 @@ const tabs = {
       },
       tab: {
         position: "relative",
+        bg: "white",
         fontWeight: "bold",
         border: "1px",
         borderColor: "gray.300",
