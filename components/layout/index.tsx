@@ -12,8 +12,8 @@ const Layout: FC<LayoutProps> = ({ children }) => (
       <GridItem colSpan={1} rowSpan={2}>
         <Sidebar />
       </GridItem>
-      <GridItem colSpan={1} bg="papayawhip" />
-      <GridItem colSpan={1}>
+      <GridItem colSpan={1} borderBottom="1px" borderColor="gray.100" />
+      <GridItem colSpan={1} bg="gray.50">
         <Container maxW="1200px" py={10} px={4}>
           {children}
         </Container>
