@@ -23,6 +23,11 @@ const colors = {
     800: "#051947",
     900: "#020818",
   },
+  gray: {
+    50: "#f5f9fc",
+    100: "#e2e8f0",
+    900: "#16192c",
+  },
 }
 
 export default colors
