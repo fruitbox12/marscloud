@@ -90,7 +90,7 @@ const SelectImage: FC = () => {
                 }
 
                 return (
-                  <Box key={index}>
+                  <Box key={index} bg="white">
                     <Flex
                       direction="column"
                       alignItems="center"
