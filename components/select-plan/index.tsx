@@ -195,7 +195,7 @@ const SelectPlan: FC = () => {
                     ) => (
                       <Box
                         key={index}
-                        border="1px solid"
+                        border="1px"
                         borderColor={
                           index === selectedPlan ? "blue.500" : "gray.300"
                         }
@@ -203,6 +203,7 @@ const SelectPlan: FC = () => {
                         color="gray.600"
                         onClick={() => setSelectedPlan(index)}
                         cursor="pointer"
+                        bg="white"
                       >
                         <VStack
                           py={3}
