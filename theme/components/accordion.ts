@@ -1,4 +1,4 @@
-const accordion = {
+export default {
   variants: {
     sidebar: {
       container: {
@@ -26,5 +26,3 @@ const accordion = {
     },
   },
 }
-
-export default accordion

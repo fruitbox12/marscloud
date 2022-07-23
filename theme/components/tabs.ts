@@ -1,4 +1,4 @@
-const tabs = {
+export default {
   baseStyle: {
     tabpanel: {
       px: "0",
@@ -63,5 +63,3 @@ const tabs = {
     },
   },
 }
-
-export default tabs

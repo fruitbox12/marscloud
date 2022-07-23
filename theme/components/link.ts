@@ -1,4 +1,4 @@
-const link = {
+export default {
   variants: {
     sidebar: {
       color: "gray.900",
@@ -10,5 +10,3 @@ const link = {
     },
   },
 }
-
-export default link
