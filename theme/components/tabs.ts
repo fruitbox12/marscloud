@@ -20,10 +20,6 @@ const tabs = {
           borderLeft: "1px",
           borderColor: "gray.300",
         },
-        "[aria-element=wrap]": {
-          flexDirection: "column",
-          w: "100%",
-        },
       },
       tabpanel: {
         marginTop: "32px",
@@ -54,7 +50,7 @@ const tabs = {
             position: "absolute",
             width: "16px",
             height: "16px",
-            backgroundColor: "#fff",
+            backgroundColor: "gray.50",
             border: "2px solid #dfdfdf",
             transform: "rotate(45deg) translateX(-50%)",
             left: "50%",

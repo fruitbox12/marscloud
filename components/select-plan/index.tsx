@@ -11,14 +11,7 @@ import {
   Flex,
   VStack,
   Grid,
-  Select,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Button,
   Text,
-  HStack,
 } from "@chakra-ui/react"
 
 const data = [
@@ -144,6 +137,189 @@ const data = [
       },
     ],
   },
+  {
+    name: "Basic",
+    description:
+      "Compute optimized instances are ideal for compute-bound applications that benefit from high-performance processors.",
+    plans: [
+      {
+        monthPrice: 60,
+        hourPrice: 0.089,
+        ram: "8 GB",
+        processor: "2 CPUs",
+        storage: "25 GB",
+        memory: "SSD Disk",
+        transfer: "4 GB",
+      },
+      {
+        monthPrice: 120,
+        hourPrice: 0.179,
+        ram: "16 GB",
+        processor: "4 CPUs",
+        storage: "50 GB",
+        memory: "SSD Disk",
+        transfer: "5 TB",
+      },
+      {
+        monthPrice: 240,
+        hourPrice: 0.357,
+        ram: "32 GB",
+        processor: "8 CPUs",
+        storage: "100 GB",
+        memory: "SSD Disk",
+        transfer: "6 TB",
+      },
+      {
+        monthPrice: 480,
+        hourPrice: 0.714,
+        ram: "64 GB",
+        processor: "16 CPUs",
+        storage: "200 GB",
+        memory: "SSD Disk",
+        transfer: "7 TB",
+      },
+      {
+        monthPrice: 960,
+        hourPrice: 1.429,
+        ram: "128 GB",
+        processor: "32 CPUs",
+        storage: "400 GB",
+        memory: "SSD Disk",
+        transfer: "8 TB",
+      },
+      {
+        monthPrice: 1200,
+        hourPrice: 1.786,
+        ram: "160 GB",
+        processor: "40 CPUs",
+        storage: "500 GB",
+        memory: "SSD Disk",
+        transfer: "9 TB",
+      },
+    ],
+  },
+  {
+    name: "Memory optimized",
+    description:
+      "Memory optimized instances are designed to deliver fast performance for workloads that process large data sets in memory.",
+    plans: [
+      {
+        monthPrice: 60,
+        hourPrice: 0.089,
+        ram: "8 GB",
+        processor: "2 CPUs",
+        storage: "25 GB",
+        memory: "SSD Disk",
+        transfer: "4 GB",
+      },
+      {
+        monthPrice: 120,
+        hourPrice: 0.179,
+        ram: "16 GB",
+        processor: "4 CPUs",
+        storage: "50 GB",
+        memory: "SSD Disk",
+        transfer: "5 TB",
+      },
+      {
+        monthPrice: 240,
+        hourPrice: 0.357,
+        ram: "32 GB",
+        processor: "8 CPUs",
+        storage: "100 GB",
+        memory: "SSD Disk",
+        transfer: "6 TB",
+      },
+      {
+        monthPrice: 480,
+        hourPrice: 0.714,
+        ram: "64 GB",
+        processor: "16 CPUs",
+        storage: "200 GB",
+        memory: "SSD Disk",
+        transfer: "7 TB",
+      },
+      {
+        monthPrice: 960,
+        hourPrice: 1.429,
+        ram: "128 GB",
+        processor: "32 CPUs",
+        storage: "400 GB",
+        memory: "SSD Disk",
+        transfer: "8 TB",
+      },
+      {
+        monthPrice: 1200,
+        hourPrice: 1.786,
+        ram: "160 GB",
+        processor: "40 CPUs",
+        storage: "500 GB",
+        memory: "SSD Disk",
+        transfer: "9 TB",
+      },
+    ],
+  },
+  {
+    name: "Basic",
+    description:
+      "Storage optimized instances are designed for workloads that require high, sequential read and write access to very large data sets on local storage",
+    plans: [
+      {
+        monthPrice: 60,
+        hourPrice: 0.089,
+        ram: "8 GB",
+        processor: "2 CPUs",
+        storage: "25 GB",
+        memory: "SSD Disk",
+        transfer: "4 GB",
+      },
+      {
+        monthPrice: 120,
+        hourPrice: 0.179,
+        ram: "16 GB",
+        processor: "4 CPUs",
+        storage: "50 GB",
+        memory: "SSD Disk",
+        transfer: "5 TB",
+      },
+      {
+        monthPrice: 240,
+        hourPrice: 0.357,
+        ram: "32 GB",
+        processor: "8 CPUs",
+        storage: "100 GB",
+        memory: "SSD Disk",
+        transfer: "6 TB",
+      },
+      {
+        monthPrice: 480,
+        hourPrice: 0.714,
+        ram: "64 GB",
+        processor: "16 CPUs",
+        storage: "200 GB",
+        memory: "SSD Disk",
+        transfer: "7 TB",
+      },
+      {
+        monthPrice: 960,
+        hourPrice: 1.429,
+        ram: "128 GB",
+        processor: "32 CPUs",
+        storage: "400 GB",
+        memory: "SSD Disk",
+        transfer: "8 TB",
+      },
+      {
+        monthPrice: 1200,
+        hourPrice: 1.786,
+        ram: "160 GB",
+        processor: "40 CPUs",
+        storage: "500 GB",
+        memory: "SSD Disk",
+        transfer: "9 TB",
+      },
+    ],
+  },
 ]
 
 const SelectPlan: FC = () => {
@@ -157,13 +333,13 @@ const SelectPlan: FC = () => {
       <Tabs variant="selectPlan">
         <TabList>
           <Grid templateColumns="1fr 4fr" gap={6} w="100%">
-            <Flex aria-element="wrap">
+            <Flex flexDirection="column" w="100%">
               <Text>Shared CPU</Text>
               <Grid templateColumns="repeat(1, 1fr)" w="100%">
                 <Tab>Basic</Tab>
               </Grid>
             </Flex>
-            <Flex aria-element="wrap">
+            <Flex flexDirection="column" w="100%">
               <Text>Dedicated CPU</Text>
               <Grid templateColumns="repeat(4, 1fr)" w="100%">
                 <Tab>General Purpose</Tab>
