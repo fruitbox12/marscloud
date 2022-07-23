@@ -124,10 +124,10 @@ const SelectImage: FC = () => {
             </Grid>
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <p>Coming soon...</p>
           </TabPanel>
           <TabPanel>
-            <p>3</p>
+            <p>Coming soon...</p>
           </TabPanel>
         </TabPanels>
       </Tabs>
