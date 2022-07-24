@@ -6,20 +6,20 @@ import {
   MenuList,
   MenuItem,
   Button,
-} from "@chakra-ui/react"
-import { useCallback, useEffect, useState } from "react"
-import { OSImage } from "../../types"
-import Icon from "./icon"
+} from '@chakra-ui/react'
+import { useCallback, useEffect, useState } from 'react'
+import { Image } from '../../../../image'
+import ImageIcon from './image-icon'
 
 type Props = {
-  image: OSImage
+  image: Image
   version?: string
   isActive?: boolean
   onClick?: () => void
-  onChange?: (image: OSImage, version?: string) => void
+  onChange?: (image: Image, version?: string) => void
 }
 
-const Card = ({
+const ImageCard = ({
   image,
   version: propVersion,
   isActive,
@@ -48,18 +48,18 @@ const Card = ({
         alignItems="center"
         onClick={handleClick}
         border="1px"
-        borderColor={isActive ? "blue.500" : "gray.300"}
+        borderColor={isActive ? 'blue.500' : 'gray.300'}
         pt={3}
-        color={isActive ? "blue.500" : "gray.400"}
+        color={isActive ? 'blue.500' : 'gray.400'}
         cursor="pointer"
       >
-        <Icon value={image.id} fontSize="38px" />
+        <ImageIcon value={image.id} fontSize="38px" />
         <Box my={4} userSelect="none">
           {image.name}
         </Box>
         <Menu>
           <MenuButton w="100%" as={Button}>
-            {version || "Select version"}
+            {version || 'Select version'}
           </MenuButton>
           <MenuList>
             {image.versions.map((version, index) => (
@@ -74,4 +74,4 @@ const Card = ({
   )
 }
 
-export default Card
+export default ImageCard

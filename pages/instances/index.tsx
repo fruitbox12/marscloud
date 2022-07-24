@@ -1,4 +1,4 @@
-import { ReactElement } from "react"
+import { ReactElement } from 'react'
 import {
   Heading,
   Stack,
@@ -7,10 +7,10 @@ import {
   Image,
   Box,
   Flex,
-} from "@chakra-ui/react"
-import Layout from "../../components/layout"
-import type { NextPageWithLayout } from "../_app"
-import createImage from "../../public/create-instance.jpg"
+} from '@chakra-ui/react'
+import Layout from '../../components/layout'
+import type { NextPageWithLayout } from '../_app'
+import createImage from '../../public/create-instance.jpg'
 
 const InstancesPage: NextPageWithLayout = () => {
   return (
@@ -20,7 +20,7 @@ const InstancesPage: NextPageWithLayout = () => {
         <Box boxSize="sm">
           <Image src={createImage.src} alt="create instance" />
         </Box>
-        <Text>Looks like you don’t have any Droplets.</Text>
+        <Text>Looks like you don't have any instances.</Text>
         <Button href="/instances/new" as="a" colorScheme="pink" mt={10}>
           Create instance
         </Button>

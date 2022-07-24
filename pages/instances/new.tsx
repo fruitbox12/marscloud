@@ -1,14 +1,13 @@
-import { ReactElement } from "react"
-import { Stack } from "@chakra-ui/react"
-import Layout from "../../components/layout"
-import type { NextPageWithLayout } from "../_app"
-import SelectImage from "../../components/select-image"
-import SelectPlan from "../../components/select-plan"
+import { ReactElement } from 'react'
+import { Stack } from '@chakra-ui/react'
+import Layout from '../../components/layout'
+import type { NextPageWithLayout } from '../_app'
+import { SelectOSImage, SelectPlan } from '../../features/instances/create'
 
 const NewInstancePage: NextPageWithLayout = () => {
   return (
     <Stack spacing={16}>
-      <SelectImage />
+      <SelectOSImage />
       <SelectPlan />
     </Stack>
   )

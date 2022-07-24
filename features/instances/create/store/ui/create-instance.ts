@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type CreateInstanceState = {
-  image: ImageOptions | null
+  image: ActiveImage | null
   plan: string | null
 }
 
@@ -10,16 +10,16 @@ const initialState: CreateInstanceState = {
   plan: null,
 }
 
-type ImageOptions = {
+type ActiveImage = {
   id: string
   version: string
 }
 
 const slice = createSlice({
-  name: "createInstance",
+  name: 'createInstance',
   initialState,
   reducers: {
-    imageUpdated: (state, action: PayloadAction<ImageOptions>) => {
+    osImageUpdated: (state, action: PayloadAction<ActiveImage>) => {
       state.image = action.payload
     },
     planUpdated: (state, action: PayloadAction<string>) => {
@@ -28,6 +28,6 @@ const slice = createSlice({
   },
 })
 
-export const { imageUpdated, planUpdated } = slice.actions
+export const { osImageUpdated, planUpdated } = slice.actions
 
 export default slice.reducer
