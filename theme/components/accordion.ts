@@ -2,25 +2,25 @@ export default {
   variants: {
     sidebar: {
       container: {
-        border: "none",
+        border: 'none',
       },
       button: {
         div: {
-          flex: "1",
-          textAlign: "left",
-          color: "gray.900",
-          fontWeight: "bold",
-          textTransform: "uppercase",
-          fontSize: "12px",
+          flex: '1',
+          textAlign: 'left',
+          color: 'gray.900',
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          fontSize: '12px',
         },
-        svg: { color: "gray.500" },
+        svg: { color: 'gray.500' },
         _hover: {
-          bg: "none",
+          bg: 'none',
         },
       },
       panel: {
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         p: 0,
       },
     },

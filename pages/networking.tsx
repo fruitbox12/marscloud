@@ -1,6 +1,6 @@
-import { ReactElement } from "react"
-import Layout from "../components/layout"
-import type { NextPageWithLayout } from "./_app"
+import { ReactElement } from 'react'
+import Layout from '../components/layout'
+import type { NextPageWithLayout } from './_app'
 
 const NetworkingPage: NextPageWithLayout = () => {
   return <p>Networking</p>

@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC } from 'react'
 import {
   Stack,
   Box,
@@ -8,9 +8,9 @@ import {
   AccordionIcon,
   AccordionPanel,
   Divider,
-} from "@chakra-ui/react"
-import SiderbarLink from "./sidebar-link"
-import { BiAddToQueue, BiBarChartAlt2 } from "react-icons/bi"
+} from '@chakra-ui/react'
+import SiderbarLink from './sidebar-link'
+import { BiAddToQueue, BiBarChartAlt2 } from 'react-icons/bi'
 
 const Sidebar: FC = () => {
   return (

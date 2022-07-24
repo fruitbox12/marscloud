@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit"
-import reducer from "./reducer"
+import { configureStore } from '@reduxjs/toolkit'
+import reducer from './reducer'
 
 const store = configureStore({
   reducer,
@@ -7,11 +7,11 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [
-          "uploads/uploadAdded",
-          "uploads/uploadUpdated",
-          "uploads/uploadDeleted",
+          'uploads/uploadAdded',
+          'uploads/uploadUpdated',
+          'uploads/uploadDeleted',
         ],
-        ignoredPaths: ["entities.uploads.items"],
+        ignoredPaths: ['entities.uploads.items'],
       },
     }),
 })

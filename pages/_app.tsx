@@ -1,12 +1,12 @@
-import { ReactElement, ReactNode } from "react"
-import type { AppProps } from "next/app"
-import type { NextPage } from "next"
-import Head from "next/head"
-import { ChakraProvider } from "@chakra-ui/react"
-import { Provider } from "react-redux"
-import store from "../store"
-import theme from "../theme"
-import "../styles/globals.css"
+import { ReactElement, ReactNode } from 'react'
+import type { AppProps } from 'next/app'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import { ChakraProvider } from '@chakra-ui/react'
+import { Provider } from 'react-redux'
+import store from '../store'
+import theme from '../theme'
+import '../styles/globals.css'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode

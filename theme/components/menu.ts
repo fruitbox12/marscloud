@@ -1,8 +1,8 @@
 export default {
-  parts: ["list"],
+  parts: ['list'],
   baseStyle: {
     list: {
-      borderRadius: "none",
+      borderRadius: 'none',
       py: 0,
     },
   },
