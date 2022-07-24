@@ -3,7 +3,6 @@ export default {
   baseStyle: {
     list: {
       borderRadius: 'none',
-      py: 0,
     },
   },
 }

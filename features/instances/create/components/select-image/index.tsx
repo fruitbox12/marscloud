@@ -16,28 +16,26 @@ import fetcher from '../../../../../infra/fetcher'
 import ImageCard from './image-card'
 import { useAppDispatch, useAppSelector } from '../../../../../store/hook'
 import { imageUpdated } from '../../slices/create-instance'
-import { Image } from '../../../../images'
+import { Image, ImageGroup } from '../../../../images'
 
 const SelectImage = () => {
-  const { data } = useSWR<Image[]>('/api/images', fetcher)
+  const { data } = useSWR<ImageGroup[]>('/api/images/groups', fetcher)
   const activeImage = useAppSelector((state) => state.ui.createInstance.image)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (data && data.length > 0) {
-      const image = data[0]
-      dispatch(imageUpdated({ id: image.id, version: image.versions[0] }))
+      const group = data[0]
+      dispatch(imageUpdated(group.images[0]))
     }
   }, [data])
 
-  const handleCardClick = useCallback((image: Image) => {
-    dispatch(imageUpdated({ id: image.id, version: image.versions[0] }))
+  const handleGroupChange = useCallback((group: ImageGroup) => {
+    dispatch(imageUpdated(group.images[0]))
   }, [])
 
-  const handleVersionChange = useCallback((image: Image, version?: string) => {
-    dispatch(
-      imageUpdated({ id: image.id, version: version || image.versions[0] })
-    )
+  const handleImageChange = useCallback((group: ImageGroup, image?: Image) => {
+    dispatch(imageUpdated(image || group.images[0]))
   }, [])
 
   if (!data) {
@@ -62,18 +60,16 @@ const SelectImage = () => {
         <TabPanels>
           <TabPanel>
             <Grid templateColumns="repeat(5, 1fr)" gap={6}>
-              {data.map((image) => (
+              {data.map((group) => (
                 <ImageCard
-                  key={image.name}
-                  image={image}
-                  version={
-                    activeImage?.id === image.id
-                      ? activeImage?.version
-                      : undefined
+                  key={group.id}
+                  group={group}
+                  image={
+                    activeImage?.group === group.id ? activeImage : undefined
                   }
-                  isActive={activeImage?.id === image.id}
-                  onClick={() => handleCardClick(image)}
-                  onChange={handleVersionChange}
+                  isActive={activeImage?.group === group.id}
+                  onClick={() => handleGroupChange(group)}
+                  onChange={handleImageChange}
                 />
               ))}
             </Grid>

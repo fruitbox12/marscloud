@@ -23,7 +23,7 @@ import { useAppDispatch, useAppSelector } from '../../../../../store/hook'
 import { planUpdated } from '../../slices/create-instance'
 
 const SelectPlan = () => {
-  const { data } = useSWR<PlanGroup[]>('/api/plans', fetcher)
+  const { data } = useSWR<PlanGroup[]>('/api/plans/groups', fetcher)
   const basicPlanGroup = useMemo<PlanGroup | undefined>(() => {
     if (data && data.length > 0) {
       return data.find((planGroup) => planGroup.id === 'basic')
@@ -33,7 +33,7 @@ const SelectPlan = () => {
   const dispatch = useAppDispatch()
 
   const handlePlanCardClick = useCallback((plan: Plan) => {
-    dispatch(planUpdated(plan.id))
+    dispatch(planUpdated(plan))
   }, [])
 
   if (!data || !basicPlanGroup) {
@@ -84,7 +84,7 @@ const SelectPlan = () => {
                       key={plan.id}
                       border="1px"
                       borderColor={
-                        plan.id === activePlan ? 'blue.500' : 'gray.300'
+                        plan.id === activePlan?.id ? 'blue.500' : 'gray.300'
                       }
                       fontSize="14px"
                       color="gray.600"
@@ -96,10 +96,10 @@ const SelectPlan = () => {
                         py={3}
                         w="100%"
                         spacing={0}
-                        bg={plan.id === activePlan ? 'blue.50' : 'gray.50'}
+                        bg={plan.id === activePlan?.id ? 'blue.50' : 'gray.50'}
                         borderBottom="1px"
                         borderColor={
-                          plan.id === activePlan ? 'blue.500' : 'gray.300'
+                          plan.id === activePlan?.id ? 'blue.500' : 'gray.300'
                         }
                       >
                         <Text>

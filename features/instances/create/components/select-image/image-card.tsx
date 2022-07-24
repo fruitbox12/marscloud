@@ -8,40 +8,40 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
-import { Image } from '../../../../images'
+import { Image, ImageGroup } from '../../../../images'
 import ImageIcon from './image-icon'
 
 type Props = {
-  image: Image
-  version?: string
+  group: ImageGroup
+  image?: Image
   isActive?: boolean
   onClick?: () => void
-  onChange?: (image: Image, version?: string) => void
+  onChange?: (group: ImageGroup, image?: Image) => void
 }
 
 const ImageCard = ({
-  image,
-  version: propVersion,
+  group,
+  image: propImage,
   isActive,
   onClick,
   onChange,
 }: Props) => {
-  const [version, setVersion] = useState<string>()
+  const [active, setActive] = useState<Image>()
 
   useEffect(() => {
-    setVersion(propVersion)
-  }, [propVersion])
+    setActive(propImage)
+  }, [propImage])
 
   const handleClick = useCallback(() => {
     onClick?.()
   }, [])
 
   const handleChange = useCallback(
-    (version: string) => {
-      setVersion(version)
-      onChange?.(image, version)
+    (image: Image) => {
+      setActive(image)
+      onChange?.(group, image)
     },
-    [image]
+    [group]
   )
 
   return (
@@ -56,24 +56,24 @@ const ImageCard = ({
         color={isActive ? 'blue.500' : 'gray.400'}
         cursor="pointer"
       >
-        <ImageIcon value={image.id} fontSize="38px" />
+        <ImageIcon group={group.id} fontSize="38px" />
         <Box my={4} userSelect="none">
-          {image.name}
+          {group.name}
         </Box>
         <Menu>
           <MenuButton w="100%" as={Button}>
-            {version || 'Select version'}
+            {active?.version || 'Select version'}
           </MenuButton>
           <MenuList>
-            {image.versions.map((version, index) => (
+            {group.images.map((image, index) => (
               <MenuItem
                 key={index}
                 onClick={(e) => {
                   e.stopPropagation()
-                  handleChange(version)
+                  handleChange(image)
                 }}
               >
-                {version}
+                {image?.version}
               </MenuItem>
             ))}
           </MenuList>

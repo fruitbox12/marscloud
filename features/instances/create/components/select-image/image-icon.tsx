@@ -1,24 +1,25 @@
 import { VscTerminalUbuntu } from 'react-icons/vsc'
 import { SiRancher, SiFedora, SiDebian, SiCentos } from 'react-icons/si'
 import { GiCompactDisc } from 'react-icons/gi'
+import { ImageGroupId } from '../../../../images'
 
 type Props = {
-  value: string
+  group: ImageGroupId
   fontSize?: string
   color?: string
 }
 
-const ImageIcon = ({ value, fontSize, color }: Props) => {
+const ImageIcon = ({ group, fontSize, color }: Props) => {
   let Component: any
-  if (value.startsWith('ubuntu')) {
+  if (group === ImageGroupId.Ubuntu) {
     Component = VscTerminalUbuntu
-  } else if (value.startsWith('rancheros')) {
+  } else if (group === ImageGroupId.RancherOS) {
     Component = SiRancher
-  } else if (value.startsWith('fedora')) {
+  } else if (group === ImageGroupId.Fedora) {
     Component = SiFedora
-  } else if (value.startsWith('debian')) {
+  } else if (group === ImageGroupId.Debian) {
     Component = SiDebian
-  } else if (value.startsWith('centos')) {
+  } else if (group === ImageGroupId.CentOS) {
     Component = SiCentos
   } else {
     Component = GiCompactDisc
