@@ -8,7 +8,7 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
-import { Image } from '../../../../image'
+import { Image } from '../../../../images'
 import ImageIcon from './image-icon'
 
 type Props = {

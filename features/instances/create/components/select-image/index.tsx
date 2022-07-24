@@ -16,7 +16,7 @@ import fetcher from '../../../../../infra/fetcher'
 import ImageCard from './image-card'
 import { useAppDispatch, useAppSelector } from '../../../../../store/hook'
 import { osImageUpdated } from '../../store/ui/create-instance'
-import { Image } from '../../../../image'
+import { Image } from '../../../../images'
 
 const SelectImage = () => {
   const { data } = useSWR<Image[]>('/api/images', fetcher)

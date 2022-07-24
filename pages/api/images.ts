@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getImages, Image } from '../../features/image'
+import { getImages, Image } from '../../features/images'
 
 export default function handler(
   req: NextApiRequest,
