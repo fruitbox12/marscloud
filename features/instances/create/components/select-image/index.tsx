@@ -15,7 +15,7 @@ import useSWR from 'swr'
 import fetcher from '../../../../../infra/fetcher'
 import ImageCard from './image-card'
 import { useAppDispatch, useAppSelector } from '../../../../../store/hook'
-import { osImageUpdated } from '../../store/ui/create-instance'
+import { imageUpdated } from '../../slices/create-instance'
 import { Image } from '../../../../images'
 
 const SelectImage = () => {
@@ -26,17 +26,17 @@ const SelectImage = () => {
   useEffect(() => {
     if (data && data.length > 0) {
       const image = data[0]
-      dispatch(osImageUpdated({ id: image.id, version: image.versions[0] }))
+      dispatch(imageUpdated({ id: image.id, version: image.versions[0] }))
     }
   }, [data])
 
   const handleCardClick = useCallback((image: Image) => {
-    dispatch(osImageUpdated({ id: image.id, version: image.versions[0] }))
+    dispatch(imageUpdated({ id: image.id, version: image.versions[0] }))
   }, [])
 
   const handleVersionChange = useCallback((image: Image, version?: string) => {
     dispatch(
-      osImageUpdated({ id: image.id, version: version || image.versions[0] })
+      imageUpdated({ id: image.id, version: version || image.versions[0] })
     )
   }, [])
 

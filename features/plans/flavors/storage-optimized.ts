@@ -1,38 +1,35 @@
-import { Plan, PlanGroup } from './types'
-import createPlans from './create-plans'
-import { IncreaseType } from './spec'
+import { Plan, PlanGroup } from '../types'
+import createPlans from '../create-plans'
+import { IncreaseType } from '../spec'
 
-export function createBasicPlanGroup(): PlanGroup {
-  const id = 'basic'
+export function createStorageOptimizedPlanGroup(): PlanGroup {
+  const id = 'storage-optimized'
   return {
     id,
-    name: 'Basic',
+    name: 'Storage-Optimized',
     description:
-      'Basic virtual machines with a mix of memory and compute resources.' +
-      ' Best for small projects that can handle variable levels of CPU performance, ' +
-      'like blogs, web apps and dev/test environments.',
-    plans: createBasicPlans(id),
+      'Instances with large amounts of super fast NVMe storage, suitable for large NoSQL databases ' +
+      '(e.g. MongoDB, Elasticsearch), time series databases, and other data warehouses.',
+    plans: createStorageOptimizedPlans(id),
   }
 }
 
-export function createBasicPlans(planGroupId: string): Plan[] {
+export function createStorageOptimizedPlans(planGroupId: string): Plan[] {
   return createPlans({
     planGroupId,
-    size: 6,
+    size: 5,
     cpu: {
       base: {
-        value: 1,
-        type: 'AMD',
+        value: 2,
       },
       increase: {
         type: IncreaseType.Multiply,
         value: 2,
-        frequency: 3,
       },
     },
     memory: {
       base: {
-        value: 0.5,
+        value: 16,
         unit: 'GB',
       },
       increase: {
@@ -42,9 +39,9 @@ export function createBasicPlans(planGroupId: string): Plan[] {
     },
     storage: {
       base: {
-        value: 10,
+        value: 300,
         unit: 'GB',
-        type: 'SSD Disk',
+        type: 'NVMe SSDs',
       },
       increase: {
         type: IncreaseType.Multiply,
@@ -53,7 +50,7 @@ export function createBasicPlans(planGroupId: string): Plan[] {
     },
     transfer: {
       base: {
-        value: 1,
+        value: 4,
         unit: 'TB',
       },
       increase: {
@@ -62,7 +59,7 @@ export function createBasicPlans(planGroupId: string): Plan[] {
       },
     },
     monthlyPrice: {
-      base: 5,
+      base: 130,
       increase: {
         type: IncreaseType.Multiply,
         value: 2,

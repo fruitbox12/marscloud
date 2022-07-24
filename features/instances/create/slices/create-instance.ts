@@ -19,7 +19,7 @@ const slice = createSlice({
   name: 'createInstance',
   initialState,
   reducers: {
-    osImageUpdated: (state, action: PayloadAction<ActiveImage>) => {
+    imageUpdated: (state, action: PayloadAction<ActiveImage>) => {
       state.image = action.payload
     },
     planUpdated: (state, action: PayloadAction<string>) => {
@@ -28,6 +28,6 @@ const slice = createSlice({
   },
 })
 
-export const { osImageUpdated, planUpdated } = slice.actions
+export const { imageUpdated, planUpdated } = slice.actions
 
 export default slice.reducer

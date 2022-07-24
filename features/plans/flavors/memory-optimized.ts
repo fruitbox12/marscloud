@@ -1,21 +1,21 @@
-import { Plan, PlanGroup } from './types'
-import createPlans from './create-plans'
-import { IncreaseType } from './spec'
+import { Plan, PlanGroup } from '../types'
+import createPlans from '../create-plans'
+import { IncreaseType } from '../spec'
 
-export function createCpuOptimizedPlanGroup(): PlanGroup {
-  const id = 'cpu-optimized'
+export function createMemoryOptimizedPlanGroup(): PlanGroup {
+  const id = 'memory-optimized'
   return {
     id,
-    name: 'CPU-Optimized',
+    name: 'Memory optimized',
     description:
-      'Compute-optimized virtual machines with dedicated hyper-threads from best in class Intel processors. ' +
-      'Best for CPU-intensive applications like CI/CD, video encoding and transcoding, machine learning, ad serving, ' +
-      'batch processing, and active front-end web and application servers.',
-    plans: createCpuOptimizedPlans(id),
+      'Memory-rich virtual machines with 8GB of RAM per vCPU and dedicated hyper-threads from best-in-class Intel processors. ' +
+      'Ideal for RAM-intensive applications like high-performance databases, ' +
+      'web scale in-memory caches, and real-time big data processing.',
+    plans: createMemoryOptimizedPlans(id),
   }
 }
 
-export function createCpuOptimizedPlans(planGroupId: string): Plan[] {
+export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
   return createPlans({
     planGroupId,
     size: 5,
@@ -30,7 +30,7 @@ export function createCpuOptimizedPlans(planGroupId: string): Plan[] {
     },
     memory: {
       base: {
-        value: 4,
+        value: 16,
         unit: 'GB',
       },
       increase: {
@@ -40,7 +40,7 @@ export function createCpuOptimizedPlans(planGroupId: string): Plan[] {
     },
     storage: {
       base: {
-        value: 25,
+        value: 50,
         unit: 'GB',
         type: 'SSD Disk',
       },
@@ -60,7 +60,7 @@ export function createCpuOptimizedPlans(planGroupId: string): Plan[] {
       },
     },
     monthlyPrice: {
-      base: 40,
+      base: 80,
       increase: {
         type: IncreaseType.Multiply,
         value: 2,

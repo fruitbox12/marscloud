@@ -1,36 +1,38 @@
-import { Plan, PlanGroup } from './types'
-import createPlans from './create-plans'
-import { IncreaseType } from './spec'
+import { Plan, PlanGroup } from '../types'
+import createPlans from '../create-plans'
+import { IncreaseType } from '../spec'
 
-export function createMemoryOptimizedPlanGroup(): PlanGroup {
-  const id = 'memory-optimized'
+export function createBasicPlanGroup(): PlanGroup {
+  const id = 'basic'
   return {
     id,
-    name: 'Memory optimized',
+    name: 'Basic',
     description:
-      'Memory-rich virtual machines with 8GB of RAM per vCPU and dedicated hyper-threads from best-in-class Intel processors. ' +
-      'Ideal for RAM-intensive applications like high-performance databases, ' +
-      'web scale in-memory caches, and real-time big data processing.',
-    plans: createMemoryOptimizedPlans(id),
+      'Basic virtual machines with a mix of memory and compute resources.' +
+      ' Best for small projects that can handle variable levels of CPU performance, ' +
+      'like blogs, web apps and dev/test environments.',
+    plans: createBasicPlans(id),
   }
 }
 
-export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
+export function createBasicPlans(planGroupId: string): Plan[] {
   return createPlans({
     planGroupId,
-    size: 5,
+    size: 6,
     cpu: {
       base: {
-        value: 2,
+        value: 1,
+        type: 'AMD',
       },
       increase: {
         type: IncreaseType.Multiply,
         value: 2,
+        frequency: 2,
       },
     },
     memory: {
       base: {
-        value: 16,
+        value: 0.5,
         unit: 'GB',
       },
       increase: {
@@ -40,7 +42,7 @@ export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
     },
     storage: {
       base: {
-        value: 50,
+        value: 10,
         unit: 'GB',
         type: 'SSD Disk',
       },
@@ -51,7 +53,7 @@ export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
     },
     transfer: {
       base: {
-        value: 4,
+        value: 1,
         unit: 'TB',
       },
       increase: {
@@ -60,7 +62,7 @@ export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
       },
     },
     monthlyPrice: {
-      base: 80,
+      base: 5,
       increase: {
         type: IncreaseType.Multiply,
         value: 2,

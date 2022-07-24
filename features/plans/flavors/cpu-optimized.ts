@@ -1,25 +1,24 @@
-import { Plan, PlanGroup } from './types'
-import createPlans from './create-plans'
-import { IncreaseType } from './spec'
+import { Plan, PlanGroup } from '../types'
+import createPlans from '../create-plans'
+import { IncreaseType } from '../spec'
 
-export function createGeneralPurposePlanGroup(): PlanGroup {
-  const id = 'general-purpose'
+export function createCpuOptimizedPlanGroup(): PlanGroup {
+  const id = 'cpu-optimized'
   return {
     id,
-    name: 'General Purpose',
+    name: 'CPU-Optimized',
     description:
-      'High performance virtual machines with a good balance of memory ' +
-      'and dedicated hyper-threads from best in class Intel processors. ' +
-      'A great choice for a wide range of mainstream, production workloads, ' +
-      'like web app hosting, e-commerce sites, medium-sized databases, and enterprise applications.',
-    plans: createGeneralPurposePlans(id),
+      'Compute-optimized virtual machines with dedicated hyper-threads from best in class Intel processors. ' +
+      'Best for CPU-intensive applications like CI/CD, video encoding and transcoding, machine learning, ad serving, ' +
+      'batch processing, and active front-end web and application servers.',
+    plans: createCpuOptimizedPlans(id),
   }
 }
 
-export function createGeneralPurposePlans(planGroupId: string): Plan[] {
+export function createCpuOptimizedPlans(planGroupId: string): Plan[] {
   return createPlans({
     planGroupId,
-    size: 6,
+    size: 5,
     cpu: {
       base: {
         value: 2,
@@ -31,7 +30,7 @@ export function createGeneralPurposePlans(planGroupId: string): Plan[] {
     },
     memory: {
       base: {
-        value: 8,
+        value: 4,
         unit: 'GB',
       },
       increase: {
@@ -61,7 +60,7 @@ export function createGeneralPurposePlans(planGroupId: string): Plan[] {
       },
     },
     monthlyPrice: {
-      base: 60,
+      base: 40,
       increase: {
         type: IncreaseType.Multiply,
         value: 2,

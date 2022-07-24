@@ -1,23 +1,25 @@
-import { Plan, PlanGroup } from './types'
-import createPlans from './create-plans'
-import { IncreaseType } from './spec'
+import { Plan, PlanGroup } from '../types'
+import createPlans from '../create-plans'
+import { IncreaseType } from '../spec'
 
-export function createStorageOptimizedPlanGroup(): PlanGroup {
-  const id = 'storage-optimized'
+export function createGeneralPurposePlanGroup(): PlanGroup {
+  const id = 'general-purpose'
   return {
     id,
-    name: 'Storage-Optimized',
+    name: 'General Purpose',
     description:
-      'Instances with large amounts of super fast NVMe storage, suitable for large NoSQL databases ' +
-      '(e.g. MongoDB, Elasticsearch), time series databases, and other data warehouses.',
-    plans: createStorageOptimizedPlans(id),
+      'High performance virtual machines with a good balance of memory ' +
+      'and dedicated hyper-threads from best in class Intel processors. ' +
+      'A great choice for a wide range of mainstream, production workloads, ' +
+      'like web app hosting, e-commerce sites, medium-sized databases, and enterprise applications.',
+    plans: createGeneralPurposePlans(id),
   }
 }
 
-export function createStorageOptimizedPlans(planGroupId: string): Plan[] {
+export function createGeneralPurposePlans(planGroupId: string): Plan[] {
   return createPlans({
     planGroupId,
-    size: 5,
+    size: 6,
     cpu: {
       base: {
         value: 2,
@@ -29,7 +31,7 @@ export function createStorageOptimizedPlans(planGroupId: string): Plan[] {
     },
     memory: {
       base: {
-        value: 16,
+        value: 8,
         unit: 'GB',
       },
       increase: {
@@ -39,9 +41,9 @@ export function createStorageOptimizedPlans(planGroupId: string): Plan[] {
     },
     storage: {
       base: {
-        value: 300,
+        value: 25,
         unit: 'GB',
-        type: 'NVMe SSDs',
+        type: 'SSD Disk',
       },
       increase: {
         type: IncreaseType.Multiply,
@@ -59,7 +61,7 @@ export function createStorageOptimizedPlans(planGroupId: string): Plan[] {
       },
     },
     monthlyPrice: {
-      base: 130,
+      base: 60,
       increase: {
         type: IncreaseType.Multiply,
         value: 2,

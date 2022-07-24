@@ -20,7 +20,7 @@ import useSWR from 'swr'
 import fetcher from '../../../../../infra/fetcher'
 import { Plan, PlanGroup } from '../../../../plans/types'
 import { useAppDispatch, useAppSelector } from '../../../../../store/hook'
-import { planUpdated } from '../../store/ui/create-instance'
+import { planUpdated } from '../../slices/create-instance'
 
 const SelectPlan = () => {
   const { data } = useSWR<PlanGroup[]>('/api/plans', fetcher)
