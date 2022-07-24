@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container, Grid, GridItem } from '@chakra-ui/react'
-import Sidebar from '../sidebar'
+import { Button, Container, Grid, GridItem } from '@chakra-ui/react'
+import Sidebar from './sidebar'
 
 type Props = {
   children: React.ReactNode
@@ -12,7 +12,11 @@ const Layout = ({ children }: Props) => (
       <GridItem colSpan={1} rowSpan={2}>
         <Sidebar />
       </GridItem>
-      <GridItem colSpan={1} borderBottom="1px" borderColor="gray.100" />
+      <GridItem colSpan={1} placeSelf="center end">
+        <Button as="a" href="/instances/new" colorScheme="green" mx={5}>
+          Create Instance
+        </Button>
+      </GridItem>
       <GridItem colSpan={1} bg="gray.50">
         <Container maxW="1200px" py={10} px={4}>
           {children}

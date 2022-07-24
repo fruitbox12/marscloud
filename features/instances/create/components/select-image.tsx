@@ -12,11 +12,11 @@ import {
   Spinner,
 } from '@chakra-ui/react'
 import useSWR from 'swr'
-import fetcher from '../../../../../infra/fetcher'
+import fetcher from '../../../../infra/fetcher'
 import ImageCard from './image-card'
-import { useAppDispatch, useAppSelector } from '../../../../../store/hook'
-import { imageUpdated } from '../../slices/create-instance'
-import { Image, ImageGroup } from '../../../../images'
+import { useAppDispatch, useAppSelector } from '../../../../store/hook'
+import { imageUpdated } from '../slices/create-instance'
+import { Image, ImageGroup } from '../../../images'
 
 const SelectImage = () => {
   const { data } = useSWR<ImageGroup[]>('/api/images/groups', fetcher)

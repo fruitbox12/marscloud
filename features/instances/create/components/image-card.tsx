@@ -8,8 +8,8 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
-import { Image, ImageGroup } from '../../../../images'
-import ImageIcon from './image-icon'
+import { Image, ImageGroup } from '../../../images'
+import ImageIcon from '../../../../components/image-icon'
 
 type Props = {
   group: ImageGroup

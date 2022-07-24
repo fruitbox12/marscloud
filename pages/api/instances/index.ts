@@ -18,29 +18,25 @@ export default function handler(
   } else if (req.method === 'POST') {
     const errors: string[] = []
     try {
-      planService.getById(req.body.plan)
+      let plan = planService.getById(req.body.plan)
+      let image = imageService.getById(req.body.image)
+      const instance = instanceService.create({
+        name: req.body.name,
+        image,
+        plan,
+      })
+      res.status(200).json(instance)
     } catch (e) {
       if (e instanceof PlanNotFoundError) {
         errors.push(e.message)
       }
-    }
-    try {
-      imageService.getById(req.body.image)
-    } catch (e) {
       if (e instanceof ImageNotFoundError) {
         errors.push(e.message)
       }
     }
     if (errors.length > 0) {
       res.status(400).json({ errors })
-      return
     }
-    const instance = instanceService.create({
-      name: req.body.name,
-      image: req.body.image,
-      plan: req.body.plan,
-    })
-    res.status(200).json(instance)
   } else {
     res.status(404).send('' as any)
   }

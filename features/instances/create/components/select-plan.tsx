@@ -17,10 +17,10 @@ import {
   HStack,
 } from '@chakra-ui/react'
 import useSWR from 'swr'
-import fetcher from '../../../../../infra/fetcher'
-import { Plan, PlanGroup } from '../../../../plans/types'
-import { useAppDispatch, useAppSelector } from '../../../../../store/hook'
-import { planUpdated } from '../../slices/create-instance'
+import fetcher from '../../../../infra/fetcher'
+import { Plan, PlanGroup } from '../../../plans/types'
+import { useAppDispatch, useAppSelector } from '../../../../store/hook'
+import { planUpdated } from '../slices/create-instance'
 
 const SelectPlan = () => {
   const { data } = useSWR<PlanGroup[]>('/api/plans/groups', fetcher)
@@ -128,8 +128,7 @@ const SelectPlan = () => {
                             {plan.memory.value} {plan.memory.unit}
                           </Text>
                           <Text color="gray.400">
-                            / {plan.cpu.value} {plan.cpu.type}{' '}
-                            {plan.cpu.value > 1 ? `CPUs` : `CPU`}
+                            / {plan.cpu.value} {plan.cpu.type} {plan.cpu.unit}
                           </Text>
                         </HStack>
                         <HStack spacing={1}>

@@ -36,6 +36,7 @@ export default function createPlans(options: CreatePlansOptions): Plan[] {
       cpu: {
         ...options.cpu.base,
         value: cpu,
+        unit: cpu > 1 ? 'CPUs' : 'CPU',
       },
       memory: {
         ...options.memory.base,

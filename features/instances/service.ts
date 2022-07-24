@@ -1,11 +1,13 @@
 import { newId } from '../../infra/id'
 import { Instance } from './types'
 import { List } from 'immutable'
+import { Image } from '../images'
+import { Plan } from '../plans'
 
 export type CreateInstanceOptions = {
   name: string
-  image: string
-  plan: string
+  image: Image
+  plan: Plan
 }
 
 let db = List<Instance>([])

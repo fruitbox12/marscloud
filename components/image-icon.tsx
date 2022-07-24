@@ -1,7 +1,7 @@
 import { VscTerminalUbuntu } from 'react-icons/vsc'
 import { SiRancher, SiFedora, SiDebian, SiCentos } from 'react-icons/si'
 import { GiCompactDisc } from 'react-icons/gi'
-import { ImageGroupId } from '../../../../images'
+import { ImageGroupId } from '../features/images'
 
 type Props = {
   group: ImageGroupId
