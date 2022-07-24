@@ -33,13 +33,16 @@ const ImageCard = ({
   }, [propVersion])
 
   const handleClick = useCallback(() => {
-    onChange?.(image, version)
+    onClick?.()
   }, [])
 
-  const handleChange = useCallback((version: string) => {
-    setVersion(version)
-    onChange?.(image, version)
-  }, [])
+  const handleChange = useCallback(
+    (version: string) => {
+      setVersion(version)
+      onChange?.(image, version)
+    },
+    [image]
+  )
 
   return (
     <Box bg="white">
@@ -63,7 +66,13 @@ const ImageCard = ({
           </MenuButton>
           <MenuList>
             {image.versions.map((version, index) => (
-              <MenuItem key={index} onClick={() => handleChange(version)}>
+              <MenuItem
+                key={index}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleChange(version)
+                }}
+              >
                 {version}
               </MenuItem>
             ))}
