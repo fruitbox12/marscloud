@@ -1,14 +1,14 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { Link } from '@chakra-ui/react'
 
-type SiderbarLinkProps = {
+type Props = {
   children: ReactNode
   href: string
 }
 
-const SiderbarLink: FC<SiderbarLinkProps> = ({ children, href }) => {
+const SiderbarLink = ({ children, href }: Props) => {
   const router = useRouter()
   const isActive =
     router.asPath.split('/')[1] === href.split('/')[1] ? true : false

@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import {
   Stack,
   Box,
@@ -12,7 +11,7 @@ import {
 import SiderbarLink from './sidebar-link'
 import { BiAddToQueue, BiBarChartAlt2 } from 'react-icons/bi'
 
-const Sidebar: FC = () => {
+const Sidebar = () => {
   return (
     <Stack bg="white" h="100%" pt={28} borderRight="1px" borderColor="gray.100">
       <Accordion defaultIndex={[0, 1]} allowMultiple variant="sidebar">
