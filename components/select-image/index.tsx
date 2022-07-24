@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react"
+import { FC, useCallback, useEffect } from "react"
 import {
   Stack,
   Heading,
@@ -22,6 +22,13 @@ const SelectImage: FC = () => {
   const { data } = useSWR<OSImage[]>("/api/images", fetcher)
   const activeImage = useAppSelector((state) => state.ui.createInstance.image)
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const image = data[0]
+      dispatch(imageUpdated({ id: image.id, version: image.versions[0] }))
+    }
+  }, [data])
 
   const handleCardClick = useCallback((image: OSImage) => {
     dispatch(imageUpdated({ id: image.id, version: image.versions[0] }))
