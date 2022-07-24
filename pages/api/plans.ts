@@ -2,8 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { getPlanGroups, PlanGroup } from '../../features/plans'
 
 export default function handler(
-  _: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse<PlanGroup[]>
 ) {
-  res.status(200).json(getPlanGroups())
+  if (req.method === 'GET') {
+    res.status(200).json(getPlanGroups())
+  } else {
+    res.status(404).send('' as any)
+  }
 }

@@ -2,8 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { getImages, Image } from '../../features/image'
 
 export default function handler(
-  _: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse<Image[]>
 ) {
-  res.status(200).json(getImages())
+  if (req.method === 'GET') {
+    res.status(200).json(getImages())
+  } else {
+    res.status(404).send('' as any)
+  }
 }
