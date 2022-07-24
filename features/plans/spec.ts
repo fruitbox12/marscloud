@@ -6,17 +6,17 @@ export enum IncreaseType {
 export type IncreaseOptions = {
   type: IncreaseType
   value: number
-  frequence?: number
+  frequency?: number
 }
 
-export class InvalidIncreaseTypeError {}
+export class InvalidIncreaseTypeError extends Error {}
 
 export default function increaseSpec(
   value: number,
   index: number,
   options: IncreaseOptions
 ): number {
-  const frequence = options.frequence || 1
+  const frequence = options.frequency || 1
   if (index % frequence !== 0) {
     return value
   }

@@ -14,12 +14,12 @@ export type CreatePlansOptions = {
 
 export type CreateSpecOptions = {
   base: Spec
-  increment: IncreaseOptions
+  increase: IncreaseOptions
 }
 
 export type CreatePriceOptions = {
   base: number
-  increment: IncreaseOptions
+  increase: IncreaseOptions
 }
 
 export default function createPlans(options: CreatePlansOptions): Plan[] {
@@ -51,11 +51,11 @@ export default function createPlans(options: CreatePlansOptions): Plan[] {
       monthlyPrice,
       hourlyPrice: getHourlyPrice(monthlyPrice),
     })
-    cpu = increaseSpec(cpu, i, options.cpu.increment)
-    memory = increaseSpec(memory, i, options.memory.increment)
-    storage = increaseSpec(storage, i, options.storage.increment)
-    transfer = increaseSpec(transfer, i, options.transfer.increment)
-    monthlyPrice = increaseSpec(monthlyPrice, i, options.monthlyPrice.increment)
+    cpu = increaseSpec(cpu, i, options.cpu.increase)
+    memory = increaseSpec(memory, i, options.memory.increase)
+    storage = increaseSpec(storage, i, options.storage.increase)
+    transfer = increaseSpec(transfer, i, options.transfer.increase)
+    monthlyPrice = increaseSpec(monthlyPrice, i, options.monthlyPrice.increase)
   }
   return plans
 }

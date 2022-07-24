@@ -23,7 +23,7 @@ export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
       base: {
         value: 2,
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
@@ -33,7 +33,7 @@ export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
         value: 16,
         unit: 'GB',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
@@ -44,7 +44,7 @@ export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
         unit: 'GB',
         type: 'SSD Disk',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
@@ -54,14 +54,14 @@ export function createMemoryOptimizedPlans(planGroupId: string): Plan[] {
         value: 4,
         unit: 'TB',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Add,
         value: 1,
       },
     },
     monthlyPrice: {
       base: 80,
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },

@@ -24,10 +24,10 @@ export function createBasicPlans(planGroupId: string): Plan[] {
         value: 1,
         type: 'AMD',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
-        frequence: 3,
+        frequency: 3,
       },
     },
     memory: {
@@ -35,7 +35,7 @@ export function createBasicPlans(planGroupId: string): Plan[] {
         value: 0.5,
         unit: 'GB',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
@@ -46,7 +46,7 @@ export function createBasicPlans(planGroupId: string): Plan[] {
         unit: 'GB',
         type: 'SSD Disk',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
@@ -56,14 +56,14 @@ export function createBasicPlans(planGroupId: string): Plan[] {
         value: 1,
         unit: 'TB',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Add,
         value: 1,
       },
     },
     monthlyPrice: {
       base: 5,
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },

@@ -24,7 +24,7 @@ export function createGeneralPurposePlans(planGroupId: string): Plan[] {
       base: {
         value: 2,
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
@@ -34,7 +34,7 @@ export function createGeneralPurposePlans(planGroupId: string): Plan[] {
         value: 8,
         unit: 'GB',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
@@ -45,7 +45,7 @@ export function createGeneralPurposePlans(planGroupId: string): Plan[] {
         unit: 'GB',
         type: 'SSD Disk',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
@@ -55,14 +55,14 @@ export function createGeneralPurposePlans(planGroupId: string): Plan[] {
         value: 4,
         unit: 'TB',
       },
-      increment: {
+      increase: {
         type: IncreaseType.Add,
         value: 1,
       },
     },
     monthlyPrice: {
       base: 60,
-      increment: {
+      increase: {
         type: IncreaseType.Multiply,
         value: 2,
       },
