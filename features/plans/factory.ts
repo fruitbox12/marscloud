@@ -1,5 +1,4 @@
 import { Spec, Plan, PlanGroupId } from './types'
-import increaseSpec, { IncreaseOptions, IncreaseType } from './spec'
 import { getHourlyPrice } from './pricing'
 
 export type CreatePlansOptions = {
@@ -22,7 +21,7 @@ export type CreatePriceOptions = {
   increase: IncreaseOptions
 }
 
-export default function createPlans(options: CreatePlansOptions): Plan[] {
+export function createPlans(options: CreatePlansOptions): Plan[] {
   const plans: Plan[] = []
   let cpu: number = options.cpu.base.value
   let memory: number = options.memory.base.value
@@ -60,6 +59,37 @@ export default function createPlans(options: CreatePlansOptions): Plan[] {
     monthlyPrice = increaseSpec(monthlyPrice, i, options.monthlyPrice.increase)
   }
   return plans
+}
+
+export enum IncreaseType {
+  Add,
+  Multiply,
+}
+
+export type IncreaseOptions = {
+  type: IncreaseType
+  value: number
+  frequency?: number
+}
+
+export class InvalidIncreaseTypeError extends Error {}
+
+export function increaseSpec(
+  currentValue: number,
+  index: number,
+  options: IncreaseOptions
+): number {
+  const frequency = options.frequency || 1
+  if (index % frequency !== 0) {
+    return currentValue
+  }
+  if (options.type === IncreaseType.Add) {
+    return currentValue + options.value
+  } else if (options.type === IncreaseType.Multiply) {
+    return currentValue * options.value
+  } else {
+    throw new InvalidIncreaseTypeError()
+  }
 }
 
 export function createBasicPlans(): Plan[] {
