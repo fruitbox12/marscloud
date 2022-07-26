@@ -25,6 +25,7 @@ import {
 } from '@chakra-ui/react'
 import { Volume } from '../../../volumes/types'
 import { FiMoreVertical } from 'react-icons/fi'
+import { ErrorResponse } from '../../../../infra/errors'
 
 type Props = {
   volumes: Volume[]
@@ -42,11 +43,8 @@ const VolumesTable = ({ volumes }: Props) => {
     }
     setIsLoading(true)
     try {
-      const response = await fetch(`/api/volume/${active.id}`, {
+      const response = await fetch(`/api/volumes/${active.id}`, {
         method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
       })
       if (response.ok) {
         toast({
@@ -56,7 +54,7 @@ const VolumesTable = ({ volumes }: Props) => {
           isClosable: true,
         })
       } else {
-        const errorResponse = await response.json()
+        const errorResponse: ErrorResponse = await response.json()
         if (errorResponse) {
           toast({
             title: 'Instance deletion failed.',

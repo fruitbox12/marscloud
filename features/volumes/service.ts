@@ -28,7 +28,7 @@ export class VolumeService {
   }
 
   delete(id: string) {
-    if (db.find((volume) => volume.id !== id)) {
+    if (!db.find((volume) => volume.id === id)) {
       throw new VolumeNotFoundError()
     }
     db = db.filter((volume) => volume.id !== id)
