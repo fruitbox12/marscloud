@@ -18,7 +18,7 @@ import {
   Stack,
   useToast,
 } from '@chakra-ui/react'
-import { Volume } from '../types'
+import { Volume } from './types'
 
 type FormValues = {
   name: string
