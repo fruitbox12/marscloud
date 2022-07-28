@@ -9,7 +9,7 @@ import {
   Box,
 } from '@chakra-ui/react'
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
-import { BiCube, BiPyramid } from 'react-icons/bi'
+import { BiCube, BiPyramid, BiNetworkChart } from 'react-icons/bi'
 import { useRouter } from 'next/router'
 
 const CreateDropdown = () => {
@@ -48,6 +48,17 @@ const CreateDropdown = () => {
               <Text fontSize="14px">Volume</Text>
               <Text fontSize="12px" color="gray.500">
                 Creates a new volume to store data in
+              </Text>
+            </MenuItem>
+            <MenuItem
+              as="button"
+              _hover={{ background: `${gray50}` }}
+              icon={<BiNetworkChart fontSize="16px" color={pink500} />}
+              onClick={() => router.push('/networking/new')}
+            >
+              <Text fontSize="14px">Networking</Text>
+              <Text fontSize="12px" color="gray.500">
+                Set up a cloud network
               </Text>
             </MenuItem>
           </MenuList>
