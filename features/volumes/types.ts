@@ -1,5 +1,7 @@
 export interface Volume {
-  id: string
   name: string
-  size: string
+  size: number
+  sizePretty: string
+  inUse: boolean
+  createTime: string
 }
