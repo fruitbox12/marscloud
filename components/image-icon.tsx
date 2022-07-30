@@ -1,10 +1,17 @@
 import { VscTerminalUbuntu } from 'react-icons/vsc'
-import { SiRancher, SiFedora, SiDebian, SiCentos } from 'react-icons/si'
+import {
+  SiRancher,
+  SiFedora,
+  SiDebian,
+  SiCentos,
+  SiRedis,
+  SiPostgresql,
+} from 'react-icons/si'
 import { GiCompactDisc } from 'react-icons/gi'
 import { ImageGroupId } from '../features/images'
 
 type Props = {
-  group: ImageGroupId
+  group: ImageGroupId | string
   fontSize?: string
   color?: string
 }
@@ -21,6 +28,10 @@ const ImageIcon = ({ group, fontSize, color }: Props) => {
     Component = SiDebian
   } else if (group === ImageGroupId.CentOS) {
     Component = SiCentos
+  } else if (group === ImageGroupId.Redis) {
+    Component = SiRedis
+  } else if (group === ImageGroupId.Postgres) {
+    Component = SiPostgresql
   } else {
     Component = GiCompactDisc
   }
