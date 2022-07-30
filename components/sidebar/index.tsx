@@ -37,7 +37,7 @@ const Sidebar = () => {
               <SiderbarLink href="/instances">Instances</SiderbarLink>
               <SiderbarLink href="/volumes">Volumes</SiderbarLink>
               <SiderbarLink href="/images">Images</SiderbarLink>
-              <SiderbarLink href="/networking">Networking</SiderbarLink>
+              <SiderbarLink href="/networks">Networking</SiderbarLink>
             </AccordionPanel>
           </AccordionItem>
         </Stack>

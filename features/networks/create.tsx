@@ -12,44 +12,58 @@ import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import { useSWRConfig } from 'swr'
 import * as Yup from 'yup'
-import { Networking } from './types'
+import { Network } from './types'
 
-const CreateNetworking = () => {
+const CreateNetwork = () => {
   const toast = useToast()
   const router = useRouter()
   const { mutate } = useSWRConfig()
   const NetworkingSchema = Yup.object().shape({
     name: Yup.string().required('Please provide the name for network'),
   })
+
   const handleSubmit = useCallback(
     async ({ name }, { setSubmitting, resetForm }) => {
       setSubmitting(true)
       try {
-        const response = await fetch('/api/networking', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ name }),
-        })
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/networks`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name }),
+          }
+        )
         if (response.ok) {
-          const network: Networking = await response.json()
+          const network: Network = await response.json()
           toast({
             title: `Network ${network.name} created`,
             description: 'The list will be refreshed automatically',
             status: 'success',
             isClosable: true,
           })
-          mutate('/api/networking')
-          router.push('/networking')
+          mutate(`${process.env.NEXT_PUBLIC_API_URL}/networks`)
+          router.push('/networks')
           resetForm()
         } else {
-          toast({
-            title: 'Failed to create network',
-            description: 'Unexpected error',
-            status: 'error',
-            isClosable: true,
-          })
+          const result = await response.json()
+          if (result) {
+            toast({
+              title: 'Failed to create network',
+              description: result.errors.join('\n'),
+              status: 'error',
+              isClosable: true,
+            })
+          } else {
+            toast({
+              title: 'Failed to create network',
+              description: 'Unspecified error',
+              status: 'error',
+              isClosable: true,
+            })
+          }
         }
       } catch (e) {
         toast({
@@ -105,4 +119,4 @@ const CreateNetworking = () => {
   )
 }
 
-export default CreateNetworking
+export default CreateNetwork

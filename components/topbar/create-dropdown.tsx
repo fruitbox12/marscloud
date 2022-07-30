@@ -54,7 +54,7 @@ const CreateDropdown = () => {
               as="button"
               _hover={{ background: `${gray50}` }}
               icon={<BiNetworkChart fontSize="16px" color={pink500} />}
-              onClick={() => router.push('/networking/new')}
+              onClick={() => router.push('/networks/new')}
             >
               <Text fontSize="14px">Networking</Text>
               <Text fontSize="12px" color="gray.500">
