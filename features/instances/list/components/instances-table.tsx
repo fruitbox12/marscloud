@@ -28,23 +28,19 @@ import { FiMoreVertical } from 'react-icons/fi'
 import { useCallback, useState } from 'react'
 import { ErrorResponse } from '../../../../infra/errors'
 import ImageIcon from '../../../../components/image-icon'
+import { useSWRConfig } from 'swr'
 
 type Props = {
   instances: Instance[]
 }
 
 function getSpecs(instance: Instance): string {
-  const { plan } = instance
-  const { cpu, memory, storage, transfer } = plan
-  return (
-    `${cpu.value} ${cpu.type || ''} ${cpu.unit} / ` +
-    `${memory.value} ${memory.unit} / ` +
-    `${storage.value} ${storage.unit} / ` +
-    `${transfer.value} ${transfer.unit} transfer`
-  )
+  const { size, sizePretty } = instance
+  return `${size} / ` + `${sizePretty} `
 }
 
 const InstancesTable = ({ instances }: Props) => {
+  const { mutate } = useSWRConfig()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const toast = useToast()
   const [active, setActive] = useState<Instance>()
@@ -56,12 +52,15 @@ const InstancesTable = ({ instances }: Props) => {
     }
     try {
       setIsLoading(true)
-      const response = await fetch(`/api/instances/${active.id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/containers/${active.id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
       if (response.ok) {
         toast({
           title: 'Instance deleted.',
@@ -69,6 +68,7 @@ const InstancesTable = ({ instances }: Props) => {
           status: 'success',
           isClosable: true,
         })
+        mutate(`${process.env.NEXT_PUBLIC_API_URL}/containers`)
       } else {
         const errorResponse: ErrorResponse = await response.json()
         if (errorResponse) {
@@ -112,42 +112,47 @@ const InstancesTable = ({ instances }: Props) => {
             <Th>Name</Th>
             <Th>Image</Th>
             <Th>Specs</Th>
+            <Th>Created</Th>
+            <Th>Status</Th>
             <Th></Th>
           </Tr>
         </Thead>
         <Tbody>
-          {instances.map((instance: Instance) => (
-            <Tr key={instance.id}>
-              <Td>{instance.name}</Td>
-              <Td>
-                <HStack>
-                  <ImageIcon group={instance.image.group} fontSize="18px" />
-                  <Text>
-                    {instance.image.name} {instance.image.version}
-                  </Text>
-                </HStack>
-              </Td>
-              <Td>{getSpecs(instance)}</Td>
-              <Td textAlign="right">
-                <Menu>
-                  <MenuButton
-                    as={IconButton}
-                    icon={<FiMoreVertical fontSize="16px" />}
-                    variant="ghost"
-                    aria-label=""
-                  />
-                  <MenuList>
-                    <MenuItem
-                      color="red"
-                      onClick={() => handleMenuItemDelete(instance)}
-                    >
-                      Delete
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
-              </Td>
-            </Tr>
-          ))}
+          {instances &&
+            instances.map((instance: Instance) => (
+              <Tr key={instance.id}>
+                <Td>{instance.name}</Td>
+                <Td>
+                  <HStack>
+                    <ImageIcon group={instance.image.name} fontSize="18px" />
+                    <Text>
+                      {instance.image.name} {instance.image.tag}
+                    </Text>
+                  </HStack>
+                </Td>
+                <Td>{getSpecs(instance)}</Td>
+                <Td>{instance.createTime}</Td>
+                <Td>{instance.status}</Td>
+                <Td textAlign="right">
+                  <Menu>
+                    <MenuButton
+                      as={IconButton}
+                      icon={<FiMoreVertical fontSize="16px" />}
+                      variant="ghost"
+                      aria-label=""
+                    />
+                    <MenuList>
+                      <MenuItem
+                        color="red"
+                        onClick={() => handleMenuItemDelete(instance)}
+                      >
+                        Delete
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
+                </Td>
+              </Tr>
+            ))}
         </Tbody>
       </Table>
       <Modal isOpen={isOpen} onClose={onClose}>

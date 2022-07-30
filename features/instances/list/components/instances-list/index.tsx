@@ -13,9 +13,13 @@ import InstancesTable from '../instances-table'
 import illustration from './illustration.svg'
 
 const InstancesList = () => {
-  const { data, error } = useSWR('/api/instances', fetcher, {
-    refreshInterval: 2500,
-  })
+  const { data, error } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/containers`,
+    fetcher,
+    {
+      refreshInterval: 2500,
+    }
+  )
 
   if (error) {
     return (

@@ -23,17 +23,20 @@ const InstancesCreate = () => {
     }
     try {
       setIsLoading(true)
-      const response = await fetch(`/api/instances`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          image: image.id,
-          plan: plan.id,
-        }),
-      })
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/containers`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            image: image.id,
+            plan: plan.id,
+          }),
+        }
+      )
       if (response.ok) {
         const instance: Instance = await response.json()
         toast({
@@ -42,7 +45,7 @@ const InstancesCreate = () => {
           status: 'success',
           isClosable: true,
         })
-        mutate('/api/instances')
+        mutate(`${process.env.NEXT_PUBLIC_API_URL}/containers`)
         router.push('/instances')
       } else {
         const result: ErrorResponse = await response.json()

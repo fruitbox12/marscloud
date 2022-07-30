@@ -19,7 +19,10 @@ import { imageUpdated } from '../slices/create-instance'
 import { Image, ImageGroup } from '../../../images'
 
 const SelectImage = () => {
-  const { data } = useSWR<ImageGroup[]>('/api/images/groups', fetcher)
+  const { data } = useSWR<ImageGroup[]>(
+    `${process.env.NEXT_PUBLIC_API_URL}/images/groups`,
+    fetcher
+  )
   const activeImage = useAppSelector((state) => state.ui.createInstance.image)
   const dispatch = useAppDispatch()
 
@@ -60,14 +63,14 @@ const SelectImage = () => {
         <TabPanels>
           <TabPanel>
             <Grid templateColumns="repeat(5, 1fr)" gap={6}>
-              {data.map((group) => (
+              {data.map((group, index) => (
                 <ImageCard
-                  key={group.id}
+                  key={index}
                   group={group}
                   image={
-                    activeImage?.group === group.id ? activeImage : undefined
+                    activeImage?.name === group.name ? activeImage : undefined
                   }
-                  isActive={activeImage?.group === group.id}
+                  isActive={activeImage?.name === group.name}
                   onClick={() => handleGroupChange(group)}
                   onChange={handleImageChange}
                 />

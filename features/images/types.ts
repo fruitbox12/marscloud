@@ -4,17 +4,21 @@ export enum ImageGroupId {
   Fedora = 'fedora',
   Debian = 'debian',
   CentOS = 'centos',
+  Redis = 'redis',
+  Postgres = 'postgres',
 }
 
 export interface Image {
   id: string
-  group: ImageGroupId
-  name: string
-  version: string
+  name: string | ImageGroupId
+  tag: string
+  size: number
+  sizePretty: string
+  inUse: boolean
+  createTime: string
 }
 
 export interface ImageGroup {
-  id: ImageGroupId
   name: string
   images: Image[]
 }

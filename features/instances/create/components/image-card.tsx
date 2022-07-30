@@ -56,13 +56,13 @@ const ImageCard = ({
         color={isActive ? 'blue.500' : 'gray.400'}
         cursor="pointer"
       >
-        <ImageIcon group={group.id} fontSize="38px" />
+        <ImageIcon group={group.name} fontSize="38px" />
         <Box my={4} userSelect="none">
           {group.name}
         </Box>
         <Menu>
           <MenuButton w="100%" as={Button}>
-            {active?.version || 'Select version'}
+            {active?.tag || 'Select version'}
           </MenuButton>
           <MenuList>
             {group.images.map((image, index) => (
@@ -73,7 +73,7 @@ const ImageCard = ({
                   handleChange(image)
                 }}
               >
-                {image?.version}
+                {image?.tag}
               </MenuItem>
             ))}
           </MenuList>
