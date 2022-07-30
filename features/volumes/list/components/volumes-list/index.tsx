@@ -15,9 +15,10 @@ import illustration from './illustration.svg'
 
 const VolumesList = () => {
   const router = useRouter()
-  const { data, error } = useSWR('/api/volumes', fetcher, {
-    refreshInterval: 2500,
-  })
+  const { data, error } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/volumes`,
+    fetcher
+  )
 
   if (error) {
     return <Text>Failed to fetch volumes</Text>

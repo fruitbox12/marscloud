@@ -7,11 +7,6 @@ import {
   Heading,
   Button,
   Input,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -22,7 +17,6 @@ import { Volume } from './types'
 
 type FormValues = {
   name: string
-  size: string
 }
 
 const CreateVolumes = () => {
@@ -31,28 +25,28 @@ const CreateVolumes = () => {
   const { mutate } = useSWRConfig()
   const initialValues = {
     name: '',
-    size: '1',
   }
 
   const VolumeSchema = Yup.object().shape({
     name: Yup.string().required('Please enter a name'),
-    size: Yup.string().required('Please enter a size'),
   })
 
   const handleSubmit = useCallback(
-    async ({ name, size }, { setSubmitting, resetForm }) => {
+    async ({ name }, { setSubmitting, resetForm }) => {
       setSubmitting(true)
       try {
-        const response = await fetch('/api/volumes', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name,
-            size,
-          }),
-        })
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/volumes`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+            }),
+          }
+        )
         if (response.ok) {
           const volume: Volume = await response.json()
           toast({
@@ -124,32 +118,6 @@ const CreateVolumes = () => {
                     />
                     <FormErrorMessage>
                       {form.errors.name as string}
-                    </FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name="size">
-                {({ field, form }: FieldProps) => (
-                  <FormControl
-                    isInvalid={
-                      form.errors.size && form.touched.size ? true : false
-                    }
-                  >
-                    <FormLabel htmlFor="size">Choose size</FormLabel>
-                    <NumberInput
-                      defaultValue={1}
-                      {...field}
-                      onChange={(val) => form.setFieldValue(field.name, val)}
-                      isDisabled={isSubmitting}
-                    >
-                      <NumberInputField />
-                      <NumberInputStepper>
-                        <NumberIncrementStepper />
-                        <NumberDecrementStepper />
-                      </NumberInputStepper>
-                    </NumberInput>
-                    <FormErrorMessage>
-                      {form.errors.size as string}
                     </FormErrorMessage>
                   </FormControl>
                 )}

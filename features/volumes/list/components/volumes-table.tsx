@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { useSWRConfig } from 'swr'
 import {
   Table,
   Thead,
@@ -22,6 +23,7 @@ import {
   Button,
   useDisclosure,
   useToast,
+  Text,
 } from '@chakra-ui/react'
 import { Volume } from '../../../volumes/types'
 import { FiMoreVertical } from 'react-icons/fi'
@@ -32,6 +34,7 @@ type Props = {
 }
 
 const VolumesTable = ({ volumes }: Props) => {
+  const { mutate } = useSWRConfig()
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [active, setActive] = useState<Volume>()
@@ -43,9 +46,12 @@ const VolumesTable = ({ volumes }: Props) => {
     }
     setIsLoading(true)
     try {
-      const response = await fetch(`/api/volumes/${active.id}`, {
-        method: 'DELETE',
-      })
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/volumes/${active.name}`,
+        {
+          method: 'DELETE',
+        }
+      )
       if (response.ok) {
         toast({
           title: 'Volume deleted.',
@@ -53,6 +59,7 @@ const VolumesTable = ({ volumes }: Props) => {
           status: 'success',
           isClosable: true,
         })
+        mutate(`${process.env.NEXT_PUBLIC_API_URL}/volumes`)
       } else {
         const errorResponse: ErrorResponse = await response.json()
         if (errorResponse) {
@@ -95,16 +102,32 @@ const VolumesTable = ({ volumes }: Props) => {
         <Table variant="simple">
           <Thead>
             <Tr>
-              <Th>Name</Th>
-              <Th>size</Th>
+              <Th maxW="200px">Name</Th>
+              <Th>Size</Th>
+              <Th>Size pretty</Th>
+              <Th>In use</Th>
+              <Th>Created</Th>
               <Th></Th>
             </Tr>
           </Thead>
           <Tbody>
-            {volumes.map((volume: Volume) => (
-              <Tr key={volume.id}>
-                <Td>{volume.name}</Td>
+            {volumes.map((volume: Volume, index) => (
+              <Tr key={index}>
+                <Td maxW="200px">
+                  <Text
+                    style={{
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {volume.name}
+                  </Text>
+                </Td>
                 <Td>{volume.size}</Td>
+                <Td>{volume.sizePretty}</Td>
+                <Td>{volume.inUse}</Td>
+                <Td>{volume.createTime}</Td>
                 <Td textAlign="right">
                   <Menu>
                     <MenuButton
