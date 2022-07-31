@@ -22,6 +22,7 @@ import {
   useToast,
   HStack,
   Text,
+  Link,
 } from '@chakra-ui/react'
 import { Instance } from '../../types'
 import { FiMoreVertical } from 'react-icons/fi'
@@ -29,6 +30,7 @@ import { useCallback, useState } from 'react'
 import { ErrorResponse } from '../../../../infra/errors'
 import ImageIcon from '../../../../components/image-icon'
 import { useSWRConfig } from 'swr'
+import NextLink from 'next/link'
 
 type Props = {
   instances: Instance[]
@@ -121,7 +123,11 @@ const InstancesTable = ({ instances }: Props) => {
           {instances &&
             instances.map((instance: Instance) => (
               <Tr key={instance.id}>
-                <Td>{instance.name}</Td>
+                <Td>
+                  <NextLink href={`/instances/${instance.id}`} passHref>
+                    <Link>{instance.name}</Link>
+                  </NextLink>
+                </Td>
                 <Td>
                   <HStack>
                     <ImageIcon group={instance.image.name} fontSize="18px" />

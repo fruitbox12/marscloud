@@ -2,19 +2,19 @@ import { ReactElement } from 'react'
 import { Heading, Stack } from '@chakra-ui/react'
 import Layout from '../../components/layout'
 import type { NextPageWithLayout } from '../_app'
-import { InstancesList } from '../../features/instances/list'
+import InstanceView from '../../features/instances/view'
 
-const InstancesPage: NextPageWithLayout = () => {
+const InstancePage: NextPageWithLayout = () => {
   return (
     <Stack spacing={10}>
-      <Heading as="h1">Instances</Heading>
-      <InstancesList />
+      <Heading as="h1">Instance</Heading>
+      <InstanceView />
     </Stack>
   )
 }
 
-InstancesPage.getLayout = function getLayout(page: ReactElement) {
+InstancePage.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>
 }
 
-export default InstancesPage
+export default InstancePage

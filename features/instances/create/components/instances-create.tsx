@@ -6,6 +6,7 @@ import { ErrorResponse } from '../../../../infra/errors'
 import { useAppSelector } from '../../../../store/hook'
 import { Instance } from '../../types'
 import SelectImage from './select-image'
+import SelectNetwork from './select-network'
 import SelectPlan from './select-plan'
 
 const InstancesCreate = () => {
