@@ -9,10 +9,15 @@ import {
   Box,
   Select,
   Button,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
 } from '@chakra-ui/react'
 import { Env } from '../types'
 import { useCallback, useEffect } from 'react'
 import { Network } from '../../networks/types'
+import { Formik, Form, Field } from 'formik'
+import * as Yup from 'yup'
 
 const InstanceView = () => {
   const router = useRouter()
@@ -26,7 +31,12 @@ const InstanceView = () => {
     fetcher
   )
 
-  const handleConnectNetwork = useCallback(() => {
+  const networIdSchema = Yup.object({
+    networkId: Yup.string().required('Please choose network'),
+  })
+
+  const handleConnectNetwork = useCallback(({ networkId }) => {
+    console.log(networkId)
     //to do with formik
   }, [])
 
@@ -71,16 +81,50 @@ const InstanceView = () => {
           ))}
         </Grid>
       </Grid>
-      <Text>Connect Network</Text>
-      {networks && (
-        <Select placeholder="Select option">
-          {networks.map((network: Network) => (
-            <option value={network.id}>{network.name}</option>
-          ))}
-        </Select>
-      )}
-
-      <Button onClick={handleConnectNetwork}>Connect</Button>
+      <Formik
+        onSubmit={handleConnectNetwork}
+        initialValues={{ networkId: '' }}
+        validationSchema={networIdSchema}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <Field name="networkId">
+              {({ form, field }) => (
+                <FormControl
+                  isInvalid={form.errors.networkId && form.touched.networkId}
+                >
+                  <FormLabel>Connect Network</FormLabel>
+                  {networks && (
+                    <Select
+                      {...field}
+                      value={field.value}
+                      onChange={(option) =>
+                        form.setFieldValue(field.name, option)
+                      }
+                      placeholder="Select option"
+                      isDisabled={isSubmitting}
+                    >
+                      {networks.map((network: Network) => (
+                        <option value={network.id} key={network.id}>
+                          {network.name}
+                        </option>
+                      ))}
+                    </Select>
+                  )}
+                  <FormErrorMessage>{form.errors.networkId}</FormErrorMessage>
+                </FormControl>
+              )}
+            </Field>
+            <Button
+              type="submit"
+              isDisabled={isSubmitting}
+              isLoading={isSubmitting}
+            >
+              Connect
+            </Button>
+          </Form>
+        )}
+      </Formik>
     </>
   )
 }
