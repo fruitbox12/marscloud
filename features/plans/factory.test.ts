@@ -57,12 +57,12 @@ const options: CreatePlansOptions = {
 }
 
 describe('createPlans', () => {
-  test('returns correct number of values', () => {
+  it('returns correct number of values', () => {
     const plans = createPlans(options)
     expect(plans).toHaveLength(3)
   })
 
-  test('returns values with correct fields', () => {
+  it('returns values with correct fields', () => {
     const plans = createPlans(options)
 
     const monthlyPrices = [5, 10, 20]

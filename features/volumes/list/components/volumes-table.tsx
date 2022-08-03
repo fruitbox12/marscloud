@@ -132,13 +132,15 @@ const VolumesTable = ({ volumes }: Props) => {
                   <Menu>
                     <MenuButton
                       as={IconButton}
+                      role="button"
                       icon={<FiMoreVertical fontSize="16px" />}
                       variant="ghost"
-                      aria-label=""
+                      aria-label={`menu-button-${volume.name}`}
                     />
                     <MenuList>
                       <MenuItem
                         color="red"
+                        aria-label={`menu-item-${volume.name}`}
                         onClick={() => handleMenuItemDelete(volume)}
                       >
                         Delete
