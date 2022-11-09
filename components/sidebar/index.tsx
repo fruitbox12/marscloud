@@ -1,47 +1,29 @@
+import { Stack } from '@chakra-ui/react'
 import {
-  Stack,
-  Box,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-  Divider,
-} from '@chakra-ui/react'
-import SiderbarLink from './sidebar-link'
-import { BiAddToQueue, BiBarChartAlt2 } from 'react-icons/bi'
+  IoGitNetworkOutline,
+  IoImagesOutline,
+  IoLeafOutline,
+  IoRocketOutline,
+} from 'react-icons/io5'
+import SidebarItem from './sidebar-item'
 
 const Sidebar = () => {
   return (
     <Stack bg="white" h="100%" pt={28} borderRight="1px" borderColor="gray.100">
-      <Accordion defaultIndex={[0, 1]} allowMultiple variant="sidebar">
-        <Stack spacing={4}>
-          <AccordionItem>
-            <AccordionButton>
-              <BiAddToQueue />
-              <Box ml={2}>Projects</Box>
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel pb={4} color="gray.200">
-              <SiderbarLink href="/projects/new">New project</SiderbarLink>
-            </AccordionPanel>
-          </AccordionItem>
-          <Divider color="gray.100" />
-          <AccordionItem>
-            <AccordionButton>
-              <BiBarChartAlt2 />
-              <Box ml={2}>Manage</Box>
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel pb={4} color="gray.200">
-              <SiderbarLink href="/instances">Instances</SiderbarLink>
-              <SiderbarLink href="/volumes">Volumes</SiderbarLink>
-              <SiderbarLink href="/images">Images</SiderbarLink>
-              <SiderbarLink href="/networks">Networking</SiderbarLink>
-            </AccordionPanel>
-          </AccordionItem>
-        </Stack>
-      </Accordion>
+      <Stack p={3}>
+        <SidebarItem icon={<IoRocketOutline />} href="/instances">
+          Instances
+        </SidebarItem>
+        <SidebarItem icon={<IoLeafOutline />} href="/volumes">
+          Volumes
+        </SidebarItem>
+        <SidebarItem icon={<IoImagesOutline />} href="/images">
+          Images
+        </SidebarItem>
+        <SidebarItem icon={<IoGitNetworkOutline />} href="/networking">
+          Networking
+        </SidebarItem>
+      </Stack>
     </Stack>
   )
 }
