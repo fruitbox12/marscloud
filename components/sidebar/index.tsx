@@ -9,7 +9,7 @@ import SidebarItem from './sidebar-item'
 
 const Sidebar = () => {
   return (
-    <Stack bg="white" h="100%" pt={28} borderRight="1px" borderColor="gray.100">
+    <Stack bg="" h="100%" pt={28} borderRight="1px" borderColor="gray.100">
       <Stack p={3}>
         <SidebarItem icon={<IoRocketOutline />} href="/instances">
           Instances
